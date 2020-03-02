@@ -6,15 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: vue | 大生的博客</title>
+  <title>快速配置Vue-i18n | 大生的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大生的博客">
-<meta property="og:url" content="http://yoursite.com/tags/vue/index.html">
+  <meta name="description" content="最近自己做的一个项目有国际化的需求，虽然是个只有2个页面的迷你项目，但是一摸一样的页面一摸一样的代码写2次会让所有程序员开始怀疑自己到底是在干什么… 于是，我就找了一下vue的国家化怎么做……果不其然！ 让给我找到了一个简单易上手的Vue国际化插件！ ​    Vue I18n是vue的一个国际化插件。详细介绍请参照官网 ​    小贴士：i18n是international(国际化)单词的缩写">
+<meta property="og:type" content="article">
+<meta property="og:title" content="快速配置Vue-i18n">
+<meta property="og:url" content="http://yoursite.com/2020/03/02/%E5%BF%AB%E9%80%9F%E9%85%8D%E7%BD%AEVue-i18n/index.html">
 <meta property="og:site_name" content="大生的博客">
+<meta property="og:description" content="最近自己做的一个项目有国际化的需求，虽然是个只有2个页面的迷你项目，但是一摸一样的页面一摸一样的代码写2次会让所有程序员开始怀疑自己到底是在干什么… 于是，我就找了一下vue的国家化怎么做……果不其然！ 让给我找到了一个简单易上手的Vue国际化插件！ ​    Vue I18n是vue的一个国际化插件。详细介绍请参照官网 ​    小贴士：i18n是international(国际化)单词的缩写">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/images/vue-i18n/preset.png">
+<meta property="og:image" content="http://yoursite.com/images/vue-i18n/check-hello.png">
+<meta property="og:image" content="http://yoursite.com/images/vue-i18n/check-i18n.png">
+<meta property="og:image" content="http://yoursite.com/images/vue-i18n/check-ja.png">
+<meta property="og:image" content="http://yoursite.com/images/vue-i18n/change-ja.png">
+<meta property="og:image" content="http://yoursite.com/images/vue-i18n/change-en.png">
+<meta property="article:published_time" content="2020-03-02T14:05:41.000Z">
+<meta property="article:modified_time" content="2020-03-02T14:20:38.274Z">
 <meta property="article:author" content="大生">
+<meta property="article:tag" content="vue">
+<meta property="article:tag" content="i18n">
+<meta property="article:tag" content="国际化">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/vue-i18n/preset.png">
   
     <link rel="alternative" href="/atom.xml" title="大生的博客" type="application/atom+xml">
   
@@ -140,36 +154,106 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-快速配置Vue-i18n" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/02/%E5%BF%AB%E9%80%9F%E9%85%8D%E7%BD%AEVue-i18n/" class="archive-article-date">
-  	<time datetime="2020-03-02T14:05:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-02</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/02/%E5%BF%AB%E9%80%9F%E9%85%8D%E7%BD%AEVue-i18n/">快速配置Vue-i18n</a>
+    <h1 class="article-title" itemprop="name">
+      快速配置Vue-i18n
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/03/02/%E5%BF%AB%E9%80%9F%E9%85%8D%E7%BD%AEVue-i18n/" class="archive-article-date">
+  	<time datetime="2020-03-02T14:05:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 最近自己做的一个项目有国际化的需求，虽然是个只有2个页面的迷你项目，但是一摸一样的页面一摸一样的代码写2次会让所有程序员开始怀疑自己到底是在干什么…<br> 于是，我就找了一下vue的国家化怎么做……果不其然！ 让给我找到了一个简单易上手的Vue国际化插件！</p>
+<p>​    Vue I18n是vue的一个国际化插件。详细介绍请参照<a href="https://kazupon.github.io/vue-i18n/" target="_blank" rel="noopener">官网</a></p>
+<p>​    <small>小贴士：i18n是<code>international(国际化)</code>单词的缩写。去掉首位的i和n，中间正好有18个字母</small>    </p>
+<a id="more"></a>
+
+<h1 id="・导入Vue-I18n"><a href="#・导入Vue-I18n" class="headerlink" title="・导入Vue I18n"></a>・导入Vue I18n</h1><p>在项目的根目录下使用<code>vue add i18n</code></p>
+<p>这里会被询问几个预设问题</p>
+<p><img src="/images/vue-i18n/preset.png" alt=""></p>
+<p>首先是选择你的本地语言环境：</p>
+<ul>
+<li>The locale of project localization. <ul>
+<li>选择你本地的语言环境。这里我选择默认的英语(en)</li>
+</ul>
+</li>
+<li>The fallback locale of project localization.<ul>
+<li>选择【没有配置时的默认语言】。例如我在这里配置了英语。那么当我的中文界面没有配置对应的中文时，则显示英语</li>
+</ul>
+</li>
+<li>The directory where store localization messages of project ‘src’ directory.<ul>
+<li>为你的src目录下创建一个放置语言配置文件夹</li>
+</ul>
+</li>
+<li>Enable locale messages in Single file components ?<ul>
+<li>如果你想在单组件中直接配置国家化的话选择yes。这里我选在在src/locales/下统一管理</li>
+</ul>
+</li>
+</ul>
+<h1 id="・关键文件介绍"><a href="#・关键文件介绍" class="headerlink" title="・关键文件介绍"></a>・关键文件介绍</h1><p>导入之后会为我们生成一个.env文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">VUE_APP_I18N_LOCALE&#x3D;en</span><br><span class="line">VUE_APP_I18N_FALLBACK_LOCALE&#x3D;en</span><br></pre></td></tr></table></figure>
+
+<p>我们可以在这里确认和更改我们配置的本地环境和fallback环境</p>
+<p>还会有一个<code>i18n.js</code>文件。可以在这里看到更详细的配置，以及做一些格式化。这里我们不做过多的修改。</p>
+<p>值得我们关注的是<code>src/locales/</code>下的文件。因为我预设的时候选择了英文，所以这里会生成一个<code>en.json</code></p>
+<h1 id="・渲染页面"><a href="#・渲染页面" class="headerlink" title="・渲染页面"></a>・渲染页面</h1><p>我们可以先看看<code>en.json</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"message"</span>: <span class="string">"hello i18n !!"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>学过JSON的朋友应该都看得懂这是一个键值对。</p>
+<p>那么就意味着我们可以使用<code>message</code>在页面上渲染出”hello i18n !!”</p>
+<p>创建一个HelloWorld.vue组件。只保留最基本的构成。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;v-container&gt;</span><br><span class="line">    &lt;h1&gt;&#123;&#123; msg &#125;&#125;&lt;&#x2F;h1&gt;</span><br><span class="line">  &lt;&#x2F;v-container&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    name: &#39;HelloWorld&#39;,</span><br><span class="line">    data() &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        msg: &#39;hello&#39;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>npm run serve</code>确认一下页面是否能正常显示。</p>
+<p><img src="/images/vue-i18n/check-hello.png" alt=""></p>
+<p>在vue中，我们会使用&#123;&#123; 参数名 &#125;&#125; 来将数据渲染到想显示的地方。</p>
+<p>而在i18n中也非常简单。我们只需要使用 &#123;&#123;&#36;t(‘参数名’)&#125;&#125; 就可以了！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;v-container&gt;</span><br><span class="line">    &lt;!-- &#123;&#123;$t(&#39;参数名&#39;)&#125;&#125; --&gt;</span><br><span class="line">    &lt;h1&gt;&#123;&#123; $t(&#39;message&#39;) &#125;&#125;&lt;&#x2F;h1&gt;</span><br><span class="line">  &lt;&#x2F;v-container&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    name: &#39;HelloWorld&#39;,</span><br><span class="line">    data() &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        msg: &#39;hello&#39;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>再次确认页面是否正常被渲染为<code>hello i18n !!</code></p>
+<p><img src="/images/vue-i18n/check-i18n.png" alt=""></p>
+<p>成功！</p>
+<h1 id="・配置第二种语言"><a href="#・配置第二种语言" class="headerlink" title="・配置第二种语言"></a>・配置第二种语言</h1><p>在这里我选择用日语做为示范。</p>
+<p>在 <code>src/locales/</code>下创建<code>ja.json</code>文件<small>(跟en.json通目录)</small></p>
+<p>内容也跟<code>en.json</code>一样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;message&quot;: &quot;こんにちは i18n!!&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在<code>.env</code>里更改本地环境语言</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VUE_APP_I18N_LOCALE&#x3D;ja</span><br></pre></td></tr></table></figure>
+
+<p>然后<code>npm run serve</code>重启项目，确认一下页面是否被渲染成日语。</p>
+<p><img src="/images/vue-i18n/check-ja.png" alt=""></p>
+<h1 id="・动态切换语言"><a href="#・动态切换语言" class="headerlink" title="・动态切换语言"></a>・动态切换语言</h1><p>如果每次切换语言都需要重启的话那是非常麻烦的，而且也失去了导入i18n的意义。</p>
+<p>在Vue i18n中，我们只需要更改 &#36;i18n.locale 的值就可以简单的做到动态切换渲染语言！</p>
+<p>这里以切换按钮为例子。</p>
+<ol>
+<li>首先创建一个按钮。</li>
+<li>给按钮配上点击事件</li>
+<li>事件处理：如果当前为英语，则切换为日语。如果为日语，则切换成英语</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;v-container&gt;</span><br><span class="line">    &lt;h1&gt;&#123;&#123; $t(&#39;message&#39;) &#125;&#125;&lt;&#x2F;h1&gt;</span><br><span class="line">    &lt;!-- &lt;v-btn&gt;等价为&lt;button&gt; 这里是因为我使用了vuetify框架。 --&gt;</span><br><span class="line">    &lt;v-btn @click&#x3D;&quot;changeLocal&quot;&gt;切换语言&lt;&#x2F;v-btn&gt;</span><br><span class="line">  &lt;&#x2F;v-container&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    name: &#39;HelloWorld&#39;,</span><br><span class="line">    data() &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        msg: &#39;hello&#39;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      changeLocal() &#123;</span><br><span class="line">        this.$i18n.locale &#x3D; this.&amp;#36;i18n.locale &#x3D;&#x3D;&#x3D; &#39;en&#39; ? &#39;ja&#39; : &#39;en&#39;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>点击页面上的切换语言按钮，看看显示信息是否会跟着改变！</p>
+<p><img src="/images/vue-i18n/change-ja.png" alt=""><br><img src="/images/vue-i18n/change-en.png" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -189,65 +273,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/02/%E5%BF%AB%E9%80%9F%E9%85%8D%E7%BD%AEVue-i18n/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/vue-vuetify%E6%9C%80%E5%B0%8F%E6%9E%84%E6%88%90%E9%A1%B9%E7%9B%AE/" class="archive-article-date">
-  	<time datetime="2020-03-01T06:48:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/03/01/vue-vuetify%E6%9C%80%E5%B0%8F%E6%9E%84%E6%88%90%E9%A1%B9%E7%9B%AE/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vue+vuetify最小构成项目</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/01/vue-vuetify%E6%9C%80%E5%B0%8F%E6%9E%84%E6%88%90%E9%A1%B9%E7%9B%AE/">vue+vuetify最小构成项目</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">vuetify</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">最小构成</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -270,9 +395,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
