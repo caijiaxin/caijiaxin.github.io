@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://yoursite.com/images/vue-i18n/change-ja.png">
 <meta property="og:image" content="http://yoursite.com/images/vue-i18n/change-en.png">
 <meta property="article:published_time" content="2020-03-02T14:05:41.000Z">
-<meta property="article:modified_time" content="2020-03-02T14:55:07.681Z">
+<meta property="article:modified_time" content="2020-03-21T15:17:11.659Z">
 <meta property="article:author" content="大生">
 <meta property="article:tag" content="vue">
 <meta property="article:tag" content="i18n">
@@ -57,7 +57,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="/assets/avatar.jpeg" class="js-avatar">
+			<img src="/assets/icon-cat.jpeg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">大生</a></h1>
@@ -111,7 +111,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="/assets/avatar.jpeg" class="js-avatar">
+				<img src="/assets/icon-cat.jpeg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">大生</h1>
@@ -242,7 +242,7 @@
 <li>给按钮配上点击事件</li>
 <li>事件处理：如果当前为英语，则切换为日语。如果为日语，则切换成英语</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;v-container&gt;</span><br><span class="line">    &lt;h1&gt;&#123;&#123; $t(&#39;message&#39;) &#125;&#125;&lt;&#x2F;h1&gt;</span><br><span class="line">    &lt;!-- &lt;v-btn&gt;等价为&lt;button&gt; 这里是因为我使用了vuetify框架。 --&gt;</span><br><span class="line">    &lt;v-btn @click&#x3D;&quot;changeLocal&quot;&gt;切换语言&lt;&#x2F;v-btn&gt;</span><br><span class="line">  &lt;&#x2F;v-container&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    name: &#39;HelloWorld&#39;,</span><br><span class="line">    data() &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        msg: &#39;hello&#39;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      changeLocal() &#123;</span><br><span class="line">        this.$i18n.locale &#x3D; this.&amp;#36;i18n.locale &#x3D;&#x3D;&#x3D; &#39;en&#39; ? &#39;ja&#39; : &#39;en&#39;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;v-container&gt;</span><br><span class="line">    &lt;h1&gt;&#123;&#123; $t(&#39;message&#39;) &#125;&#125;&lt;&#x2F;h1&gt;</span><br><span class="line">    &lt;!-- &lt;v-btn&gt;等价为&lt;button&gt; 这里是因为我使用了vuetify框架。 --&gt;</span><br><span class="line">    &lt;v-btn @click&#x3D;&quot;changeLocal&quot;&gt;切换语言&lt;&#x2F;v-btn&gt;</span><br><span class="line">  &lt;&#x2F;v-container&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    name: &#39;HelloWorld&#39;,</span><br><span class="line">    data() &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        msg: &#39;hello&#39;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      changeLocal() &#123;</span><br><span class="line">        this.$i18n.locale &#x3D; this.$i18n.locale &#x3D;&#x3D;&#x3D; &#39;en&#39; ? &#39;ja&#39; : &#39;en&#39;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 
 <p>点击页面上的切换语言按钮，看看显示信息是否会跟着改变！</p>
 <p><img src="/images/vue-i18n/change-ja.png" alt=""><br><img src="/images/vue-i18n/change-en.png" alt=""></p>
@@ -336,6 +336,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/03/22/%E8%AF%A5%E4%B8%8D%E4%BC%9A%E8%BF%98%E6%9C%89%E4%BA%BA%E5%9C%A8%E7%94%A8%E4%B8%89%E5%A4%A7%E8%BF%90%E8%90%A5%E5%95%86%E5%90%A7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          该不会还有人在用三大运营商吧
+        
+      </div>
+    </a>
   
   
     <a href="/2020/03/01/vue-vuetify%E6%9C%80%E5%B0%8F%E6%9E%84%E6%88%90%E9%A1%B9%E7%9B%AE/" id="article-nav-older" class="article-nav-link-wrap">
@@ -469,6 +478,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">vuetify</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">最小构成</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">スマホ料金</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">生活費</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">節約方法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">i18n</a>
               </li>
              
@@ -477,11 +506,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vuetify</a>
+                <a href="javascript:void(0)" class="js-tag color4">手机费</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">最小构成</a>
+                <a href="javascript:void(0)" class="js-tag color4">生活费</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">省钱心得</a>
               </li>
             
             <div class="clearfix"></div>
