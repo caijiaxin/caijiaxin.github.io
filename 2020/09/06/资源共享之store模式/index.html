@@ -6,28 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>vue+vuetify最小构成项目 | 大生的奇怪知识博客</title>
+  <title>资源共享之store模式 | 大生的奇怪知识博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="​由于本人平时做项目经常使用vue框架，加上偏爱vuetify这个把我从繁琐且令人头疼的css中解放出来的前端UI库。 所以想把自己平时启动一个vue项目时的最简单构成分析给大家。">
+  <meta name="description" content="前提： 掌握最基础的 Vuejs  12345678$ node -vv12.18.3$ npm -v6.14.6$ vue -V@vue&#x2F;cli 4.3.1  不同的组件共同维护同一个值在 Vue 项目中，我们经常会遇到这样的情况：  首先，我们有一个值  然后，我们需要在不同的组件中进行操作，影响这个值   最开始应当考虑是否是父子组件，如果是可以使用父子组件关系来传值。 父子组件传值的结构：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue+vuetify最小构成项目">
-<meta property="og:url" content="http://yoursite.com/2020/03/01/vue-vuetify%E6%9C%80%E5%B0%8F%E6%9E%84%E6%88%90%E9%A1%B9%E7%9B%AE/index.html">
+<meta property="og:title" content="资源共享之store模式">
+<meta property="og:url" content="http://yoursite.com/2020/09/06/%E8%B5%84%E6%BA%90%E5%85%B1%E4%BA%AB%E4%B9%8Bstore%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="大生的奇怪知识博客">
-<meta property="og:description" content="​由于本人平时做项目经常使用vue框架，加上偏爱vuetify这个把我从繁琐且令人头疼的css中解放出来的前端UI库。 所以想把自己平时启动一个vue项目时的最简单构成分析给大家。">
+<meta property="og:description" content="前提： 掌握最基础的 Vuejs  12345678$ node -vv12.18.3$ npm -v6.14.6$ vue -V@vue&#x2F;cli 4.3.1  不同的组件共同维护同一个值在 Vue 项目中，我们经常会遇到这样的情况：  首先，我们有一个值  然后，我们需要在不同的组件中进行操作，影响这个值   最开始应当考虑是否是父子组件，如果是可以使用父子组件关系来传值。 父子组件传值的结构：">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/images/minimum-vue-project/vue-preset.png">
-<meta property="og:image" content="http://yoursite.com/images/minimum-vue-project/app-running-at.png">
-<meta property="og:image" content="http://yoursite.com/images/minimum-vue-project/show-vue-logo.png">
-<meta property="og:image" content="http://yoursite.com/images/minimum-vue-project/vuetify-preset.png">
-<meta property="og:image" content="http://yoursite.com/images/minimum-vue-project/vuetify-logo.png">
-<meta property="article:published_time" content="2020-03-01T06:48:06.000Z">
-<meta property="article:modified_time" content="2020-03-02T14:26:21.240Z">
+<meta property="og:image" content="http://yoursite.com/images/store-model/001.png">
+<meta property="og:image" content="http://yoursite.com/images/store-model/002.png">
+<meta property="og:image" content="http://yoursite.com/images/store-model/003.png">
+<meta property="og:image" content="http://yoursite.com/images/store-model/004.png">
+<meta property="og:image" content="http://yoursite.com/images/store-model/005.png">
+<meta property="og:image" content="http://yoursite.com/images/store-model/006.png">
+<meta property="article:published_time" content="2020-09-05T16:01:17.000Z">
+<meta property="article:modified_time" content="2020-09-05T16:05:46.020Z">
 <meta property="article:author" content="大生">
 <meta property="article:tag" content="vue">
-<meta property="article:tag" content="vuetify">
-<meta property="article:tag" content="最小构成">
+<meta property="article:tag" content="资源共享">
+<meta property="article:tag" content="store">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/minimum-vue-project/vue-preset.png">
+<meta name="twitter:image" content="http://yoursite.com/images/store-model/001.png">
   
     <link rel="alternative" href="/atom.xml" title="大生的奇怪知识博客" type="application/atom+xml">
   
@@ -153,60 +154,143 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-vue-vuetify最小构成项目" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-资源共享之store模式" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      vue+vuetify最小构成项目
+      资源共享之store模式
     </h1>
   
 
         
-        <a href="/2020/03/01/vue-vuetify%E6%9C%80%E5%B0%8F%E6%9E%84%E6%88%90%E9%A1%B9%E7%9B%AE/" class="archive-article-date">
-  	<time datetime="2020-03-01T06:48:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
+        <a href="/2020/09/06/%E8%B5%84%E6%BA%90%E5%85%B1%E4%BA%AB%E4%B9%8Bstore%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2020-09-05T16:01:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code>​由于本人平时做项目经常使用vue框架，加上偏爱vuetify这个把我从繁琐且令人头疼的css中解放出来的前端UI库。
-所以想把自己平时启动一个vue项目时的最简单构成分析给大家。</code></pre><a id="more"></a>
+        <h1 id="前提："><a href="#前提：" class="headerlink" title="前提："></a>前提：</h1><ul>
+<li>掌握最基础的 Vuejs</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> node -v</span></span><br><span class="line">v12.18.3</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm -v</span></span><br><span class="line">6.14.6</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> vue -V</span></span><br><span class="line">@vue/cli 4.3.1</span><br></pre></td></tr></table></figure>
 
-<h2 id="・电脑环境前提"><a href="#・电脑环境前提" class="headerlink" title="・电脑环境前提"></a>・电脑环境前提</h2><p>​    本篇文章使用的是@vue/cli。所以请确保你的Node.js版本高于8.9(来自于<a href="https://cli.vuejs.org/zh/guide/installation.html" target="_blank" rel="noopener">Vue CLI官网</a>)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">v13.3.0 // 保证这个高于8.9</span><br><span class="line">vue --version</span><br><span class="line">@vue/cli 4.1.1 // 确认是为 @vue/cli</span><br><span class="line"></span><br><span class="line">// 如果是 vue-cli 请先卸载 </span><br><span class="line">// npm uninstall vue-cli -g</span><br><span class="line"></span><br><span class="line">// 之后重新安装 @vue/cli</span><br><span class="line">// npm install -g @vue/cli</span><br></pre></td></tr></table></figure>
+<h1 id="不同的组件共同维护同一个值"><a href="#不同的组件共同维护同一个值" class="headerlink" title="不同的组件共同维护同一个值"></a>不同的组件共同维护同一个值</h1><p>在 Vue 项目中，我们经常会遇到这样的情况：</p>
+<ul>
+<li><p>首先，我们有一个值</p>
+</li>
+<li><p>然后，我们需要在不同的组件中进行操作，影响这个值</p>
+</li>
+</ul>
+<p>最开始应当考虑是否是父子组件，如果是可以使用父子组件关系来传值。</p>
+<p>父子组件传值的结构：</p>
+<p><img src="/images/store-model/001.png" alt="001"></p>
+<h1 id="父子组件传值方式的问题"><a href="#父子组件传值方式的问题" class="headerlink" title="父子组件传值方式的问题"></a>父子组件传值方式的问题</h1><p>这样会出现一些问题：</p>
+<ul>
+<li>如果这时候有第三个组件也需要维护这个值的话，这个第三个组件也必须是这个父组件的子组件</li>
+<li>如果这个组件是子组件的子组件(也就是父组件的孙组件)的话，它需要<code>$emit()</code>2 次才能达到</li>
+<li>如果这个嵌套更深，这个<code>$emit()</code>的操作就会更复杂，代码会难以维护</li>
+</ul>
+<p>可以看到，但是如果两个组件之间如果并不是父子关系的话这个方式就没办法使用了。当然为了让他们能够共同维护一个值，刻意的把 2 个本来没有关系的组件设计成父子关系也是不可取的。</p>
+<p>所以，这个时候就需要使用耦合度更低的 store 模式来替换它。</p>
+<h1 id="store-模式"><a href="#store-模式" class="headerlink" title="store 模式"></a>store 模式</h1><p>store 模式顾名思义，它提供了一个”存储空间(store)”来保存这个值。然后所有人(组件)可以平等的访问这个空间(store)。</p>
+<p><img src="/images/store-model/002.png" alt="002"></p>
+<p>不难看出，这个模式下如果需要新增一个组件 X 来维护这个值，那么只需要在组件 X 中写如相对应的代码即可。不会影响已有的组件。</p>
+<p>而且这个新的组件也不需要是某个组件的子组件。</p>
+<p>同时，如果出现了需要被多个组件同时维护的值，这个值可以直接存储在 store 中。那么它就可以平等的被所有需要它的组件访问。</p>
+<hr>
+<p>上面是为了对 store 模式有一个简单的认识所画的简易图。官方给出的 store 模式的图如下：</p>
+<p><img src="/images/store-model/003.png" alt="003"></p>
+<p>在 store 模式中，不推荐在各个组件内直接对 store 中的值进行修改。</p>
+<p>而是通过调用 store 中定义好的方法来对值进行修改。</p>
+<p>这个设计可以理解为 Java 中对类的封装，我们通常不允许一个类中的私有成员变量被外部擅自修改，而是希望通过调用事先定义好的 setXXX()方法。</p>
+<h1 id="store-模式简单案例"><a href="#store-模式简单案例" class="headerlink" title="store 模式简单案例"></a>store 模式简单案例</h1><p>这里通过一个简单的例子来深入了解 store 模式。</p>
+<hr>
+<p>例子概述：</p>
+<p>现在在组件 A 中设置一个计数器，用来显示一个数字。这个数字就是需要多个组件共同维护的值。</p>
+<p>然后创建组件 B 和组件 C，这 2 个组件分别都是一个按钮。</p>
+<p>组件当点击组件 B 按钮是，计数器加 1。当点击组件 C 按钮时候，计数器加 2。</p>
+<p>梳理一下需要做的事：</p>
+<ol>
+<li>创建一个新的 vue 项目</li>
+<li>创建 store。设置需要维护的值，以及修改这个值的方法。</li>
+<li>创建组件 A。设置计数器</li>
+<li>创建组件 B。添加计数器加 1 方法</li>
+<li>创建组件 C。添加计数器加 2 方法</li>
+<li>测试效果</li>
+</ol>
+<hr>
+<blockquote>
+<p>创建一个新的 vue 项目</p>
+</blockquote>
+<p>通过<code>vue create 项目名</code>简单的创建一个干净的项目。</p>
+<p><img src="/images/store-model/004.png" alt="004"></p>
+<p>然后进入项目，通过<code>npm run serve</code>来查看项目创建是否成功。</p>
+<blockquote>
+<p>创建 store。设置需要维护的值，以及修改这个值的方法</p>
+</blockquote>
+<p>在 src 下创建一个<code>store.js</code>文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = &#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">        counter: <span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    addOne() &#123;</span><br><span class="line">        <span class="keyword">this</span>.state.counter++</span><br><span class="line">    &#125;,</span><br><span class="line">    addTwo() &#123;</span><br><span class="line">        <span class="keyword">this</span>.state.counter += <span class="number">2</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
 
-<h2 id="・创建一个新的项目"><a href="#・创建一个新的项目" class="headerlink" title="・创建一个新的项目"></a>・创建一个新的项目</h2><p>​    使用<code>vue create 项目名</code>指令可以在你的当前目录下新建一个干净的vue项目。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 移动到你想放的文件目录</span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> projects/</span></span><br><span class="line"></span><br><span class="line">// 新建一个名为 web 的vue项目</span><br><span class="line">vue create web</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>state</code>用于保存需要维护的值。这里我们维护一个计数器（counter）</p>
+</li>
+<li><p>addOne()方法用于给计数器加 1，addTwo()方法用于给计数器加 2</p>
+</li>
+<li><p>最后别忘了 export 导出</p>
+</li>
+</ul>
+<blockquote>
+<p>创建组件 A</p>
+</blockquote>
+<p>把原来的 HelloWorld.vue 删掉，然后删除 App.vue 中无关的样式。使页面呈现一个空白的状态。</p>
+<p>然后创建组件 A。在 App.vue 中使用这个组件。</p>
+<hr>
+<p>App.vue</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">        &lt;component-a &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import ComponentA from &#39;@&#x2F;components&#x2F;ComponentA&#39;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#39;App&#39;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        ComponentA</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">#app &#123;</span><br><span class="line">    text-align: center;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
 
+<p>ComponentA.vue</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;p&gt;计数器:&#123;&#123; shareState.counter &#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import store from &#39;@&#x2F;store&#39;</span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#39;A&#39;,</span><br><span class="line">    data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            shareState: store.state &#x2F;&#x2F; 取出store中的state.不要直接取counter,那样会指向值而不是store实例。</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 
+<p>页面的状态：</p>
+<p><img src="/images/store-model/005.png" alt="005"></p>
+<blockquote>
+<p>创建组件 B 和组件 C</p>
+</blockquote>
+<p>这两个组件都是按钮。最后也要导入到 App.vue 中使用。</p>
+<hr>
+<p>ComponentB.vue</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;button @click&#x3D;&quot;addOne&quot;&gt;+1&lt;&#x2F;button&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import store from &#39;@&#x2F;store&#39;</span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#39;B&#39;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        addOne() &#123;</span><br><span class="line">            store.addOne()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 
-<p>​    之后会被询问要导入哪些预设<img src="/images/minimum-vue-project/vue-preset.png" alt=""></p>
-<p>​    这些插件都是可以在后期需要的时候再导入的，所以在这里我们选择default(babel, eslint)，按下回车。</p>
-<p>​    结束之后，我们在当前目录下输入<code>ls</code>确认一下web项目是否被创建</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ls</span></span><br><span class="line">web</span><br></pre></td></tr></table></figure>
+<p>ComponentC.vue</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;button @click&#x3D;&quot;addTwo&quot;&gt;+2&lt;&#x2F;button&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import store from &#39;@&#x2F;store&#39;</span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#39;C&#39;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        addTwo() &#123;</span><br><span class="line">            store.addTwo()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 
-<p>​    如果出现了web(你的项目名)，那么就说明项目创建成功了！</p>
-<p>​    根据提示，进入web目录下。</p>
-<p>​    然后执行<code>npm run serve</code>启动项目。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> web/</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm run serve</span></span><br></pre></td></tr></table></figure>
+<p>App.vue</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">        &lt;component-a &#x2F;&gt;</span><br><span class="line">        &lt;component-b &#x2F;&gt;</span><br><span class="line">        &lt;span class&#x3D;&quot;space&quot;&gt;&lt;&#x2F;span&gt;</span><br><span class="line">        &lt;component-c &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import ComponentA from &#39;@&#x2F;components&#x2F;ComponentA&#39;</span><br><span class="line">import ComponentB from &#39;@&#x2F;components&#x2F;ComponentB&#39;</span><br><span class="line">import ComponentC from &#39;@&#x2F;components&#x2F;ComponentC&#39;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#39;App&#39;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        ComponentA,</span><br><span class="line">        ComponentB,</span><br><span class="line">        ComponentC</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">#app &#123;</span><br><span class="line">    text-align: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.space &#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    display: inline-block;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
 
-
-
-<p>如果出现以下内容，则表示项目启动成功。现在可以通过访问<code>localhost:8080</code>端口来查看项目是否成功被启动。</p>
-<p><img src="/images/minimum-vue-project/app-running-at.png" alt=""></p>
-<p>出现Vue的标志性！</p>
-<p><img src="/images/minimum-vue-project/show-vue-logo.png" alt=""></p>
-<h2 id="・导入Vuetify"><a href="#・导入Vuetify" class="headerlink" title="・导入Vuetify"></a>・导入Vuetify</h2><p>​    使用<code>vue add vuetify</code>指令添加vuetify库。</p>
-<p>​    此时同样会被询问要导入哪些预设</p>
-<p><img src="/images/minimum-vue-project/vuetify-preset.png" alt=""></p>
-<p>与vue的时候一样，这里也选择推荐的Default，回车。</p>
-<p>导入结束之后，重新执行<code>npm run serve</code>，并访问<code>localhost:8080</code>端口。</p>
-<p><img src="/images/minimum-vue-project/vuetify-logo.png" alt=""></p>
-<p>​    首页变成了vuetify样式就说明成功了！</p>
+<p>现在，页面上应该是这样子的：</p>
+<p><img src="/images/store-model/006.png" alt="006"></p>
+<blockquote>
+<p>测试效果</p>
+</blockquote>
+<p>现在，点击+1 按钮计数器的值就会+1。点击+2 按钮计数器的值就会+2。</p>
+<p>然后注意，A,B,C 三个组件互相都<strong>不是父子关系</strong>。</p>
+<p>现在如果需要添加一个组件 D，那么只需要写一个 ComponentD.vue。然后写上与之对应的处理。</p>
+<p>在这个过程中，我们都不需要再去修改 ABC 三个组件！</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>当需要多个组件共同维护同一个值的时候，可以选择父子组件传值的方式<ul>
+<li>但是这个方式有很大的局限性。不是父子关系的组件不能这样做</li>
+</ul>
+</li>
+<li>不是父子组件的时候可以选择使用简单的 store 模式来让多个组件之间共享资源</li>
+</ul>
+<p>之后还会介绍一个更加强大的<strong>Vuex</strong>状态管理模式。</p>
+<p>但是请记住，<strong>在大多数情况下，一个简单的 store 模式是足够用于资源共享的。</strong></p>
+<p>在小型项目中往往 store 模式是最佳实现，因为它比起 Vuex 更小巧，代码量也更少。</p>
 
       
 
@@ -224,11 +308,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">vuetify</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">资源共享</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">最小构成</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">store</a>
         		</li>
       		
 		</ul>
@@ -284,7 +368,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/01/vue-vuetify%E6%9C%80%E5%B0%8F%E6%9E%84%E6%88%90%E9%A1%B9%E7%9B%AE/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/09/06/%E8%B5%84%E6%BA%90%E5%85%B1%E4%BA%AB%E4%B9%8Bstore%E6%A8%A1%E5%BC%8F/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -298,15 +382,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/03/02/%E5%BF%AB%E9%80%9F%E9%85%8D%E7%BD%AEVue-i18n/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          快速配置Vue-i18n
-        
-      </div>
-    </a>
   
+    <a href="/2020/04/18/%E5%BF%AB%E9%80%9F%E9%85%8D%E7%BD%AEvue-router/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">快速配置vue-router</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
