@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>资源共享之store模式 | 大生的奇怪知识博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前提： 掌握最基础的 Vuejs  12345678$ node -vv12.18.3$ npm -v6.14.6$ vue -V@vue&#x2F;cli 4.3.1  不同的组件共同维护同一个值在 Vue 项目中，我们经常会遇到这样的情况：  首先，我们有一个值  然后，我们需要在不同的组件中进行操作，影响这个值   最开始应当考虑是否是父子组件，如果是可以使用父子组件关系来传值。 父子组件传值的结构：">
+  <meta name="description" content="前提： 掌握最基础的 Vuejs  12345678$ node -vv12.18.3$ npm -v6.14.6$ vue -V@vue&#x2F;cli 4.3.1  不同的组件共同维护同一个值在 Vue 项目中，我们经常会遇到这样的情况：  首先，我们有一个值  然后，我们需要在不同的组件中进行操作，影响这个值   最开始应当考虑是否是父子组件，如果是可以使用父子组件关系来传值。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="资源共享之store模式">
 <meta property="og:url" content="http://yoursite.com/2020/09/06/%E8%B5%84%E6%BA%90%E5%85%B1%E4%BA%AB%E4%B9%8Bstore%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="大生的奇怪知识博客">
-<meta property="og:description" content="前提： 掌握最基础的 Vuejs  12345678$ node -vv12.18.3$ npm -v6.14.6$ vue -V@vue&#x2F;cli 4.3.1  不同的组件共同维护同一个值在 Vue 项目中，我们经常会遇到这样的情况：  首先，我们有一个值  然后，我们需要在不同的组件中进行操作，影响这个值   最开始应当考虑是否是父子组件，如果是可以使用父子组件关系来传值。 父子组件传值的结构：">
+<meta property="og:description" content="前提： 掌握最基础的 Vuejs  12345678$ node -vv12.18.3$ npm -v6.14.6$ vue -V@vue&#x2F;cli 4.3.1  不同的组件共同维护同一个值在 Vue 项目中，我们经常会遇到这样的情况：  首先，我们有一个值  然后，我们需要在不同的组件中进行操作，影响这个值   最开始应当考虑是否是父子组件，如果是可以使用父子组件关系来传值。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/images/store-model/001.png">
 <meta property="og:image" content="http://yoursite.com/images/store-model/002.png">
@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://yoursite.com/images/store-model/005.png">
 <meta property="og:image" content="http://yoursite.com/images/store-model/006.png">
 <meta property="article:published_time" content="2020-09-05T16:01:17.000Z">
-<meta property="article:modified_time" content="2020-09-05T16:05:46.020Z">
+<meta property="article:modified_time" content="2020-09-05T16:09:03.517Z">
 <meta property="article:author" content="大生">
 <meta property="article:tag" content="vue">
 <meta property="article:tag" content="资源共享">
@@ -187,6 +187,8 @@
 </li>
 </ul>
 <p>最开始应当考虑是否是父子组件，如果是可以使用父子组件关系来传值。</p>
+<a id="more"></a>
+
 <p>父子组件传值的结构：</p>
 <p><img src="/images/store-model/001.png" alt="001"></p>
 <h1 id="父子组件传值方式的问题"><a href="#父子组件传值方式的问题" class="headerlink" title="父子组件传值方式的问题"></a>父子组件传值方式的问题</h1><p>这样会出现一些问题：</p>
@@ -510,6 +512,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">vuetify</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">最小构成</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">スマホ料金</a>
               </li>
              
@@ -522,10 +536,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">i18n</a>
               </li>
              
@@ -534,11 +544,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vuetify</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">最小构成</a>
+                <a href="javascript:void(0)" class="js-tag color1">vue-router</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -559,10 +565,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">store</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">vue-router</a>
               </li>
             
             <div class="clearfix"></div>

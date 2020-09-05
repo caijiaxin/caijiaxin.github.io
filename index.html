@@ -175,111 +175,9 @@
 </li>
 </ul>
 <p>最开始应当考虑是否是父子组件，如果是可以使用父子组件关系来传值。</p>
-<p>父子组件传值的结构：</p>
-<p><img src="/images/store-model/001.png" alt="001"></p>
-<h1 id="父子组件传值方式的问题"><a href="#父子组件传值方式的问题" class="headerlink" title="父子组件传值方式的问题"></a>父子组件传值方式的问题</h1><p>这样会出现一些问题：</p>
-<ul>
-<li>如果这时候有第三个组件也需要维护这个值的话，这个第三个组件也必须是这个父组件的子组件</li>
-<li>如果这个组件是子组件的子组件(也就是父组件的孙组件)的话，它需要<code>$emit()</code>2 次才能达到</li>
-<li>如果这个嵌套更深，这个<code>$emit()</code>的操作就会更复杂，代码会难以维护</li>
-</ul>
-<p>可以看到，但是如果两个组件之间如果并不是父子关系的话这个方式就没办法使用了。当然为了让他们能够共同维护一个值，刻意的把 2 个本来没有关系的组件设计成父子关系也是不可取的。</p>
-<p>所以，这个时候就需要使用耦合度更低的 store 模式来替换它。</p>
-<h1 id="store-模式"><a href="#store-模式" class="headerlink" title="store 模式"></a>store 模式</h1><p>store 模式顾名思义，它提供了一个”存储空间(store)”来保存这个值。然后所有人(组件)可以平等的访问这个空间(store)。</p>
-<p><img src="/images/store-model/002.png" alt="002"></p>
-<p>不难看出，这个模式下如果需要新增一个组件 X 来维护这个值，那么只需要在组件 X 中写如相对应的代码即可。不会影响已有的组件。</p>
-<p>而且这个新的组件也不需要是某个组件的子组件。</p>
-<p>同时，如果出现了需要被多个组件同时维护的值，这个值可以直接存储在 store 中。那么它就可以平等的被所有需要它的组件访问。</p>
-<hr>
-<p>上面是为了对 store 模式有一个简单的认识所画的简易图。官方给出的 store 模式的图如下：</p>
-<p><img src="/images/store-model/003.png" alt="003"></p>
-<p>在 store 模式中，不推荐在各个组件内直接对 store 中的值进行修改。</p>
-<p>而是通过调用 store 中定义好的方法来对值进行修改。</p>
-<p>这个设计可以理解为 Java 中对类的封装，我们通常不允许一个类中的私有成员变量被外部擅自修改，而是希望通过调用事先定义好的 setXXX()方法。</p>
-<h1 id="store-模式简单案例"><a href="#store-模式简单案例" class="headerlink" title="store 模式简单案例"></a>store 模式简单案例</h1><p>这里通过一个简单的例子来深入了解 store 模式。</p>
-<hr>
-<p>例子概述：</p>
-<p>现在在组件 A 中设置一个计数器，用来显示一个数字。这个数字就是需要多个组件共同维护的值。</p>
-<p>然后创建组件 B 和组件 C，这 2 个组件分别都是一个按钮。</p>
-<p>组件当点击组件 B 按钮是，计数器加 1。当点击组件 C 按钮时候，计数器加 2。</p>
-<p>梳理一下需要做的事：</p>
-<ol>
-<li>创建一个新的 vue 项目</li>
-<li>创建 store。设置需要维护的值，以及修改这个值的方法。</li>
-<li>创建组件 A。设置计数器</li>
-<li>创建组件 B。添加计数器加 1 方法</li>
-<li>创建组件 C。添加计数器加 2 方法</li>
-<li>测试效果</li>
-</ol>
-<hr>
-<blockquote>
-<p>创建一个新的 vue 项目</p>
-</blockquote>
-<p>通过<code>vue create 项目名</code>简单的创建一个干净的项目。</p>
-<p><img src="/images/store-model/004.png" alt="004"></p>
-<p>然后进入项目，通过<code>npm run serve</code>来查看项目创建是否成功。</p>
-<blockquote>
-<p>创建 store。设置需要维护的值，以及修改这个值的方法</p>
-</blockquote>
-<p>在 src 下创建一个<code>store.js</code>文件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = &#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">        counter: <span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    addOne() &#123;</span><br><span class="line">        <span class="keyword">this</span>.state.counter++</span><br><span class="line">    &#125;,</span><br><span class="line">    addTwo() &#123;</span><br><span class="line">        <span class="keyword">this</span>.state.counter += <span class="number">2</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><code>state</code>用于保存需要维护的值。这里我们维护一个计数器（counter）</p>
-</li>
-<li><p>addOne()方法用于给计数器加 1，addTwo()方法用于给计数器加 2</p>
-</li>
-<li><p>最后别忘了 export 导出</p>
-</li>
-</ul>
-<blockquote>
-<p>创建组件 A</p>
-</blockquote>
-<p>把原来的 HelloWorld.vue 删掉，然后删除 App.vue 中无关的样式。使页面呈现一个空白的状态。</p>
-<p>然后创建组件 A。在 App.vue 中使用这个组件。</p>
-<hr>
-<p>App.vue</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">        &lt;component-a &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import ComponentA from &#39;@&#x2F;components&#x2F;ComponentA&#39;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#39;App&#39;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        ComponentA</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">#app &#123;</span><br><span class="line">    text-align: center;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
-
-<p>ComponentA.vue</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;p&gt;计数器:&#123;&#123; shareState.counter &#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import store from &#39;@&#x2F;store&#39;</span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#39;A&#39;,</span><br><span class="line">    data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            shareState: store.state &#x2F;&#x2F; 取出store中的state.不要直接取counter,那样会指向值而不是store实例。</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>页面的状态：</p>
-<p><img src="/images/store-model/005.png" alt="005"></p>
-<blockquote>
-<p>创建组件 B 和组件 C</p>
-</blockquote>
-<p>这两个组件都是按钮。最后也要导入到 App.vue 中使用。</p>
-<hr>
-<p>ComponentB.vue</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;button @click&#x3D;&quot;addOne&quot;&gt;+1&lt;&#x2F;button&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import store from &#39;@&#x2F;store&#39;</span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#39;B&#39;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        addOne() &#123;</span><br><span class="line">            store.addOne()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>ComponentC.vue</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;button @click&#x3D;&quot;addTwo&quot;&gt;+2&lt;&#x2F;button&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import store from &#39;@&#x2F;store&#39;</span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#39;C&#39;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        addTwo() &#123;</span><br><span class="line">            store.addTwo()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>App.vue</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">        &lt;component-a &#x2F;&gt;</span><br><span class="line">        &lt;component-b &#x2F;&gt;</span><br><span class="line">        &lt;span class&#x3D;&quot;space&quot;&gt;&lt;&#x2F;span&gt;</span><br><span class="line">        &lt;component-c &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import ComponentA from &#39;@&#x2F;components&#x2F;ComponentA&#39;</span><br><span class="line">import ComponentB from &#39;@&#x2F;components&#x2F;ComponentB&#39;</span><br><span class="line">import ComponentC from &#39;@&#x2F;components&#x2F;ComponentC&#39;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#39;App&#39;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        ComponentA,</span><br><span class="line">        ComponentB,</span><br><span class="line">        ComponentC</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">#app &#123;</span><br><span class="line">    text-align: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.space &#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    display: inline-block;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
-
-<p>现在，页面上应该是这样子的：</p>
-<p><img src="/images/store-model/006.png" alt="006"></p>
-<blockquote>
-<p>测试效果</p>
-</blockquote>
-<p>现在，点击+1 按钮计数器的值就会+1。点击+2 按钮计数器的值就会+2。</p>
-<p>然后注意，A,B,C 三个组件互相都<strong>不是父子关系</strong>。</p>
-<p>现在如果需要添加一个组件 D，那么只需要写一个 ComponentD.vue。然后写上与之对应的处理。</p>
-<p>在这个过程中，我们都不需要再去修改 ABC 三个组件！</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
-<li>当需要多个组件共同维护同一个值的时候，可以选择父子组件传值的方式<ul>
-<li>但是这个方式有很大的局限性。不是父子关系的组件不能这样做</li>
-</ul>
-</li>
-<li>不是父子组件的时候可以选择使用简单的 store 模式来让多个组件之间共享资源</li>
-</ul>
-<p>之后还会介绍一个更加强大的<strong>Vuex</strong>状态管理模式。</p>
-<p>但是请记住，<strong>在大多数情况下，一个简单的 store 模式是足够用于资源共享的。</strong></p>
-<p>在小型项目中往往 store 模式是最佳实现，因为它比起 Vuex 更小巧，代码量也更少。</p>
-
+        
+          <a class="article-more-a" href="/2020/09/06/%E8%B5%84%E6%BA%90%E5%85%B1%E4%BA%AB%E4%B9%8Bstore%E6%A8%A1%E5%BC%8F/#more">more >></a>
+        
       
 
       
@@ -862,6 +760,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">vuetify</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">最小构成</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">スマホ料金</a>
               </li>
              
@@ -874,10 +784,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">i18n</a>
               </li>
              
@@ -886,11 +792,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vuetify</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">最小构成</a>
+                <a href="javascript:void(0)" class="js-tag color1">vue-router</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -911,10 +813,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">store</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">vue-router</a>
               </li>
             
             <div class="clearfix"></div>
