@@ -142,6 +142,98 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Vuex-map映射" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/06/Vuex-map%E6%98%A0%E5%B0%84/">Vuex:map映射</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/06/Vuex-map%E6%98%A0%E5%B0%84/" class="archive-article-date">
+  	<time datetime="2020-09-06T12:03:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Vuex 提供了很多方便于管理共同资源的方法。</p>
+<p>但是当一个页面中有多处需要调用 Vuex 的时候，例如<code>this.$sotre.xxx.xxx</code>这样的代码会显得很多，影响美观。</p>
+<p>为了解决这个问题，Vuex 提供了一个 map 映射关系的语法糖，使用更少的代码来操作 Vuex。</p>
+<h1 id="前提-amp-环境"><a href="#前提-amp-环境" class="headerlink" title="前提&amp;环境"></a>前提&amp;环境</h1><ul>
+<li>拥有 vuejs 的基础知识</li>
+<li>了解 Vuex 的 4 个核心内容(state, mutations, actions, getters)</li>
+<li>创建好一个空的 vue 项目，并安装 Vuex</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> node -v</span></span><br><span class="line">v12.18.3</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm -v</span></span><br><span class="line">6.14.6</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> vue -V</span></span><br><span class="line">@vue/cli 4.3.1</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2020/09/06/Vuex-map%E6%98%A0%E5%B0%84/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">vuex</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">语法糖</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/06/Vuex-map%E6%98%A0%E5%B0%84/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Vuex模块化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -955,11 +1047,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">i18n</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">国际化</a>
+                <a href="javascript:void(0)" class="js-tag color4">语法糖</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -984,6 +1072,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">節約方法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">i18n</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">国际化</a>
               </li>
              
               <li class="article-tag-list-item">

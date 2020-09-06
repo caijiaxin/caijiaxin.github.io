@@ -6,15 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | 大生的奇怪知识博客</title>
+  <title>Vuex:map映射 | 大生的奇怪知识博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大生的奇怪知识博客">
-<meta property="og:url" content="http://yoursite.com/archives/2020/index.html">
+  <meta name="description" content="Vuex 提供了很多方便于管理共同资源的方法。 但是当一个页面中有多处需要调用 Vuex 的时候，例如this.$sotre.xxx.xxx这样的代码会显得很多，影响美观。 为了解决这个问题，Vuex 提供了一个 map 映射关系的语法糖，使用更少的代码来操作 Vuex。 前提&amp;环境 拥有 vuejs 的基础知识 了解 Vuex 的 4 个核心内容(state, mutations, ac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vuex:map映射">
+<meta property="og:url" content="http://yoursite.com/2020/09/06/Vuex-map%E6%98%A0%E5%B0%84/index.html">
 <meta property="og:site_name" content="大生的奇怪知识博客">
+<meta property="og:description" content="Vuex 提供了很多方便于管理共同资源的方法。 但是当一个页面中有多处需要调用 Vuex 的时候，例如this.$sotre.xxx.xxx这样的代码会显得很多，影响美观。 为了解决这个问题，Vuex 提供了一个 map 映射关系的语法糖，使用更少的代码来操作 Vuex。 前提&amp;环境 拥有 vuejs 的基础知识 了解 Vuex 的 4 个核心内容(state, mutations, ac">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/images/vuex-map/001.png">
+<meta property="article:published_time" content="2020-09-06T12:03:33.000Z">
+<meta property="article:modified_time" content="2020-09-06T12:05:21.426Z">
 <meta property="article:author" content="大生">
+<meta property="article:tag" content="vue">
+<meta property="article:tag" content="vuex">
+<meta property="article:tag" content="语法糖">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/vuex-map/001.png">
   
     <link rel="alternative" href="/atom.xml" title="大生的奇怪知识博客" type="application/atom+xml">
   
@@ -140,36 +149,99 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Vuex-map映射" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/09/06/Vuex-map%E6%98%A0%E5%B0%84/" class="archive-article-date">
-  	<time datetime="2020-09-06T12:03:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-06</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/09/06/Vuex-map%E6%98%A0%E5%B0%84/">Vuex:map映射</a>
+    <h1 class="article-title" itemprop="name">
+      Vuex:map映射
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/09/06/Vuex-map%E6%98%A0%E5%B0%84/" class="archive-article-date">
+  	<time datetime="2020-09-06T12:03:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Vuex 提供了很多方便于管理共同资源的方法。</p>
+<p>但是当一个页面中有多处需要调用 Vuex 的时候，例如<code>this.$sotre.xxx.xxx</code>这样的代码会显得很多，影响美观。</p>
+<p>为了解决这个问题，Vuex 提供了一个 map 映射关系的语法糖，使用更少的代码来操作 Vuex。</p>
+<h1 id="前提-amp-环境"><a href="#前提-amp-环境" class="headerlink" title="前提&amp;环境"></a>前提&amp;环境</h1><ul>
+<li>拥有 vuejs 的基础知识</li>
+<li>了解 Vuex 的 4 个核心内容(state, mutations, actions, getters)</li>
+<li>创建好一个空的 vue 项目，并安装 Vuex</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> node -v</span></span><br><span class="line">v12.18.3</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm -v</span></span><br><span class="line">6.14.6</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> vue -V</span></span><br><span class="line">@vue/cli 4.3.1</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h1 id="映射关系"><a href="#映射关系" class="headerlink" title="映射关系"></a>映射关系</h1><ul>
+<li>mapState &gt; computed</li>
+<li>mapGetters &gt; computed</li>
+<li>mapActions &gt; methods</li>
+</ul>
+<h1 id="测试用项目"><a href="#测试用项目" class="headerlink" title="测试用项目"></a>测试用项目</h1><blockquote>
+<p>项目结构</p>
+</blockquote>
+<p><img src="/images/vuex-map/001.png" alt="001"></p>
+<blockquote>
+<p>App.vue</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">        &lt;name-list &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import NameList from &#39;@&#x2F;components&#x2F;NameList&#39;</span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#39;App&#39;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        NameList</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>NameList.vue</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li v-for&#x3D;&quot;item in names&quot; :key&#x3D;&quot;item&quot;&gt;&#123;&#123; item &#125;&#125;&lt;&#x2F;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li v-for&#x3D;&quot;item in langages&quot; :key&#x3D;&quot;item&quot;&gt;&#123;&#123; item &#125;&#125;&lt;&#x2F;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line">        &lt;input type&#x3D;&quot;text&quot; v-model&#x3D;&quot;name&quot; &#x2F;&gt;</span><br><span class="line">        &lt;button @click&#x3D;&quot;append&quot;&gt;ADD&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; mapGetters, mapActions &#125; from &#39;vuex&#39;</span><br><span class="line">export default &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            name: &#39;&#39;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    computed: &#123;</span><br><span class="line">        ...mapGetters(&#39;mod1&#39;, [&#39;names&#39;, &#39;langages&#39;])</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        ...mapActions(&#39;mod1&#39;, [&#39;appendName&#39;]),</span><br><span class="line">        append() &#123;</span><br><span class="line">            this.appendName(this.name)</span><br><span class="line">            this.name &#x3D; &#39;&#39;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>store/name.js</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = &#123;</span><br><span class="line">    namespaced: <span class="literal">true</span>,</span><br><span class="line">    state: &#123;</span><br><span class="line">        nameList: [<span class="string">'Edward'</span>, <span class="string">'Mustang'</span>, <span class="string">'Hawkeye'</span>, <span class="string">'Scar'</span>, <span class="string">'Blood Rain'</span>],</span><br><span class="line">        langageList: [<span class="string">'Java'</span>, <span class="string">'Golang'</span>, <span class="string">'Python'</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    mutations: &#123;</span><br><span class="line">        add(state, payload) &#123;</span><br><span class="line">            state.nameList.push(payload)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    actions: &#123;</span><br><span class="line">        appendName(context, payload) &#123;</span><br><span class="line">            context.commit(<span class="string">'add'</span>, payload)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    getters: &#123;</span><br><span class="line">        names(state) &#123;</span><br><span class="line">            <span class="keyword">return</span> state.nameList</span><br><span class="line">        &#125;,</span><br><span class="line">        langages(state) &#123;</span><br><span class="line">            <span class="keyword">return</span> state.langageList</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> name</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>store/index.js</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"><span class="keyword">import</span> name <span class="keyword">from</span> <span class="string">'./name'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    modules: &#123;</span><br><span class="line">        mod1: name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
+
+<h1 id="State-和-mapState"><a href="#State-和-mapState" class="headerlink" title="State 和 mapState"></a>State 和 mapState</h1><p>state 是 vuex 的核心，存放共享资源。官方推荐在 computed:{}块中读取它。</p>
+<p>一般写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123; names() &#123; return this.$store.state.mod1.nameList &#125;, langages() &#123;</span><br><span class="line">return this.$store.state.mod1.langageList &#125; &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>mapState 方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">    ...mapState(&#123;</span><br><span class="line">        names: (state) &#x3D;&gt; state.mod1.nameList,</span><br><span class="line">        langages: (state) &#x3D;&gt; state.mod1.langageList</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="getters-和-mapGetters"><a href="#getters-和-mapGetters" class="headerlink" title="getters 和 mapGetters"></a>getters 和 mapGetters</h1><p>一般写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123; names() &#123; return this.$store.getters[&#39;mod1&#x2F;names&#39;] &#125;, langages() &#123;</span><br><span class="line">return this.$store.getters[&#39;mod1&#x2F;langages&#39;] &#125; &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>mapGetters 方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123; ...mapGetters(&#39;mod1&#39;, [&#39;names&#39;, &#39;langages&#39;]) &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123; ...mapGetters(&#123; names: &#39;mod1&#x2F;names&#39;, langages: &#39;mod1&#x2F;langages&#39; &#125;) &#125;,</span><br></pre></td></tr></table></figure>
+
+<h1 id="actions-和-mapActions"><a href="#actions-和-mapActions" class="headerlink" title="actions 和 mapActions"></a>actions 和 mapActions</h1><p>一般写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$store.dispatch(&#39;mod1&#x2F;appendName&#39;, this.name)</span><br></pre></td></tr></table></figure>
+
+<p>mapActions 方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123; &#x2F;&#x2F; 将 this.appendName() 映射为</span><br><span class="line">this.$store.dispatch(&#39;mod1&#x2F;appendName&#39;, payload) ...mapActions(&#39;mod1&#39;,</span><br><span class="line">[&#39;appendName&#39;]), append() &#123; this.appendName(this.name) this.name &#x3D; &#39;&#39; &#125; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123; &#x2F;&#x2F; 将 this.add() 映射为 this.$store.dispatch(&#39;mod1&#x2F;appendName&#39;,</span><br><span class="line">payload) ...mapActions(&#123; add: &#39;mod1&#x2F;appendName&#39; &#125;), append() &#123;</span><br><span class="line">this.add(this.name) this.name &#x3D; &#39;&#39; &#125; &#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -189,375 +261,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/09/06/Vuex-map%E6%98%A0%E5%B0%84/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/09/06/Vuex%E6%A8%A1%E5%9D%97%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2020-09-06T11:04:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-06</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/09/06/Vuex%E6%A8%A1%E5%9D%97%E5%8C%96/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vuex模块化</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/09/06/Vuex%E6%A8%A1%E5%9D%97%E5%8C%96/">Vuex模块化</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">vuex</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">模块化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/09/06/vuex%E5%85%A5%E9%97%A8/" class="archive-article-date">
-  	<time datetime="2020-09-06T08:55:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/09/06/vuex%E5%85%A5%E9%97%A8/">vuex入门</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">vuex</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/09/06/%E8%B5%84%E6%BA%90%E5%85%B1%E4%BA%AB%E4%B9%8Bstore%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2020-09-05T16:01:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/09/06/%E8%B5%84%E6%BA%90%E5%85%B1%E4%BA%AB%E4%B9%8Bstore%E6%A8%A1%E5%BC%8F/">资源共享之store模式</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">资源共享</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">store</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/18/%E5%BF%AB%E9%80%9F%E9%85%8D%E7%BD%AEvue-router/" class="archive-article-date">
-  	<time datetime="2020-04-18T07:41:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/18/%E5%BF%AB%E9%80%9F%E9%85%8D%E7%BD%AEvue-router/">快速配置vue-router</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">vue-router</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/22/%E3%81%88%EF%BC%9F-%E3%81%BE%E3%81%A0%E5%A4%A7%E6%89%8B%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2%E4%BD%BF%E3%81%A3%E3%81%A6%E3%82%93%E3%81%AE%E3%81%8B%E3%82%88/" class="archive-article-date">
-  	<time datetime="2020-03-21T16:22:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/22/%E3%81%88%EF%BC%9F-%E3%81%BE%E3%81%A0%E5%A4%A7%E6%89%8B%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2%E4%BD%BF%E3%81%A3%E3%81%A6%E3%82%93%E3%81%AE%E3%81%8B%E3%82%88/">え？　まだ大手キャリア使ってんのかよ</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">スマホ料金</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">生活費</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">節約方法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/22/%E8%AF%A5%E4%B8%8D%E4%BC%9A%E8%BF%98%E6%9C%89%E4%BA%BA%E5%9C%A8%E7%94%A8%E4%B8%89%E5%A4%A7%E8%BF%90%E8%90%A5%E5%95%86%E5%90%A7/" class="archive-article-date">
-  	<time datetime="2020-03-21T15:22:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/22/%E8%AF%A5%E4%B8%8D%E4%BC%9A%E8%BF%98%E6%9C%89%E4%BA%BA%E5%9C%A8%E7%94%A8%E4%B8%89%E5%A4%A7%E8%BF%90%E8%90%A5%E5%95%86%E5%90%A7/">该不会还有人在用三大运营商吧</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">手机费</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">生活费</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">省钱心得</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/02/%E5%BF%AB%E9%80%9F%E9%85%8D%E7%BD%AEVue-i18n/" class="archive-article-date">
-  	<time datetime="2020-03-02T14:05:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/02/%E5%BF%AB%E9%80%9F%E9%85%8D%E7%BD%AEVue-i18n/">快速配置Vue-i18n</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">i18n</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">国际化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/vue-vuetify%E6%9C%80%E5%B0%8F%E6%9E%84%E6%88%90%E9%A1%B9%E7%9B%AE/" class="archive-article-date">
-  	<time datetime="2020-03-01T06:48:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/01/vue-vuetify%E6%9C%80%E5%B0%8F%E6%9E%84%E6%88%90%E9%A1%B9%E7%9B%AE/">vue+vuetify最小构成项目</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">vuetify</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">最小构成</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -580,8 +383,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
